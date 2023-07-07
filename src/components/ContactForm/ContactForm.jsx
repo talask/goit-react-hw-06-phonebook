@@ -2,6 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, DivMyForm, Label } from './ContactForm.styled';
 import * as yup from 'yup';
 import styled from 'styled-components';
+import { useDispatch } from "react-redux";
+import { addContact } from 'redux/actions';
 
 const InputField = styled(Field)`
     outline: none;
@@ -28,7 +30,13 @@ const schema = yup.object().shape({
   number: yup.string().matches(phoneRegExp, 'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +').required(),
 });
 
-export const ContactForm = ({contactsChange}) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+
+  const handleContactsChange = (obj) => {
+    console.log(obj);
+    dispatch(addContact(obj));
+  };
 
     return ( 
       <DivMyForm>
@@ -37,7 +45,7 @@ export const ContactForm = ({contactsChange}) => {
             validationSchema = {schema}
             onSubmit = {(values, {resetForm}) => {
               
-              contactsChange(values);
+              handleContactsChange(values);
               resetForm();
             }}
         >

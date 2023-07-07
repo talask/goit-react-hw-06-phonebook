@@ -1,12 +1,22 @@
-import PropTypes from 'prop-types';
+
 import { ContactItem } from './ContactItem';
 import { Table } from './Contacts.styled';
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContact } from 'redux/actions';
 
 
-export const Contacts = ({contacts, fnDelete}) => {
+export const Contacts = () => {
+    const contacts = useSelector(state => state.contacts);
+    const dispatch = useDispatch();
+    
+    const fnDelete = (id) => {
+        dispatch(deleteContact(id));
+      }
+
+
     if(contacts)
     return ( 
-        <Table>
+        contacts && <Table>
             <tbody>
             {contacts.map(({name, number, id}, i) => {
                 return (
@@ -24,9 +34,4 @@ export const Contacts = ({contacts, fnDelete}) => {
         </tbody>
     </Table>
     )
-}
-
-Contacts.propTypes = {
-    contacts: PropTypes.array, 
-    fnDelete: PropTypes.func,
 }
