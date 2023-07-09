@@ -7,7 +7,7 @@ import { deleteContact, getContacts } from 'redux/contactsSlice';
 
 export const Contacts = () => {
     const contacts = useSelector(getContacts);
-    console.log(contacts)
+   
     const dispatch = useDispatch();
     
     const fnDelete = (id) => {
