@@ -35,7 +35,6 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleContactsChange = (obj) => {
-    console.log(obj);
     dispatch(addContact(obj));
   };
 

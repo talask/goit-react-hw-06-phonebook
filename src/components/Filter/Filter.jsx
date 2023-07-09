@@ -1,12 +1,7 @@
 import { nanoid } from 'nanoid';
-
 import { useDispatch, useSelector } from "react-redux";
 import { InputField } from '../ContactForm/ContactForm.styled';
-import { filterChange } from 'redux/contactsSlice';
-import { getFilter } from 'redux/filterSlice';
-import { updateFilter } from 'redux/filterSlice';
-
-
+import { getFilter, updateFilter } from 'redux/filterSlice';
 
 
 export const Filter = () => {
@@ -16,10 +11,8 @@ export const Filter = () => {
 
     const handleChange = evt => {
         const { value } = evt.target;
-       
         dispatch(updateFilter(value));
-        dispatch(filterChange(value));
-      };
+    };
 
     return (
         <>
@@ -27,14 +20,14 @@ export const Filter = () => {
                 Find contacts by name
             </p>
             <InputField 
-            type="text"
-            name="filter"
-            value={filter}
-            id={nanoid()}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            onChange={handleChange}
-            required
+                type="text"
+                name="filter"
+                value={filter}
+                id={nanoid()}
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                onChange={handleChange}
+                required
             />
         </>
     )

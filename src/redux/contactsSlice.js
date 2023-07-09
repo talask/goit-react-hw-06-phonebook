@@ -7,30 +7,24 @@ const contactsInitialState = {
         {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
         {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
-    // filter: '',
-    
+        
   };
 
-  const contactsSlice = createSlice({
-        name: "contacts",
+const contactsSlice = createSlice({
+    name: "contacts",
   
-        initialState: contactsInitialState,
+    initialState: contactsInitialState,
   
-        reducers: {
-            addContact(state, action) {
-                    console.log(action.payload);
-                    state.contacts.push({...action.payload, id: nanoid()});
-            },
-            deleteContact(state, action) {
-                state.contacts = state.contacts.filter(contact => action.payload !== contact.id);
-            },
-            filterChange(state,action) {
-                state.contacts = state.contacts.filter(contact => {
-                    console.log(contact.name)
-                    return contact.name.toLowerCase().includes(action.payload.toLowerCase())
-                });
-            }
+    reducers: {
+        addContact(state, action) {
+            state.contacts.push({...action.payload, id: nanoid()});
         },
+
+        deleteContact(state, action) {
+            state.contacts = state.contacts.filter(contact => action.payload !== contact.id);
+        },
+
+    },
 
   });
 
