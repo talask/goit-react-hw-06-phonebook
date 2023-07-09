@@ -2,16 +2,22 @@ import { nanoid } from 'nanoid';
 
 import { useDispatch, useSelector } from "react-redux";
 import { InputField } from '../ContactForm/ContactForm.styled';
-import { filterChange } from 'redux/actions';
+import { filterChange } from 'redux/contactsSlice';
+import { getFilter } from 'redux/filterSlice';
+import { updateFilter } from 'redux/filterSlice';
+
 
 
 
 export const Filter = () => {
-    const filter = useSelector(state => state.filter);
+    
+    const filter = useSelector(getFilter);
     const dispatch = useDispatch();
 
     const handleChange = evt => {
         const { value } = evt.target;
+       
+        dispatch(updateFilter(value));
         dispatch(filterChange(value));
       };
 

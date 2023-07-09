@@ -11,7 +11,7 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
    
     switch (action.type) {
-        case "tasks/addContact": 
+        case "contacts/addContact": 
             
             return {  
               ...state,  
@@ -21,16 +21,16 @@ export const rootReducer = (state = initialState, action) => {
               ],
             };
         
-        case "tasks/deleteContact": 
+        case "contacts/deleteContact": 
             return {
                 ...state,
                 contacts: state.contacts.filter(contact => contact.id !== action.payload),
             };
         
-        case "tasks/filterChange": 
+        case "contacts/filterChange": 
             return {
                 ...state,
-                filter: action.payload,
+                
                 contacts: state.contacts.filter(({name}) => {
                     return name.toLowerCase().includes(state.filter.toLowerCase());
                   }),

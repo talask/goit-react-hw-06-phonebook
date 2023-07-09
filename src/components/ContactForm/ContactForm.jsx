@@ -3,7 +3,8 @@ import { Button, DivMyForm, Label } from './ContactForm.styled';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { useDispatch } from "react-redux";
-import { addContact } from 'redux/actions';
+
+import { addContact } from 'redux/contactsSlice';
 
 const InputField = styled(Field)`
     outline: none;

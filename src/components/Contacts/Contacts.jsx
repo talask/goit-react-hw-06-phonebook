@@ -2,11 +2,12 @@
 import { ContactItem } from './ContactItem';
 import { Table } from './Contacts.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from 'redux/actions';
+import { deleteContact, getContacts } from 'redux/contactsSlice';
 
 
 export const Contacts = () => {
-    const contacts = useSelector(state => state.contacts);
+    const contacts = useSelector(getContacts);
+    console.log(contacts)
     const dispatch = useDispatch();
     
     const fnDelete = (id) => {
